@@ -6,9 +6,9 @@
 </p>
 
 <p>
-  <strong>Name:</strong>
+  <strong>ID:</strong>
   <%= @user.id %>
-</p
+</p>
 
 <p>
   <strong>Email:</strong>
@@ -17,7 +17,12 @@
 
 <p>
   <strong>First micropost:</strong>
-  <%= @user.microposts[0].content.presence || "no posts written"%>
+  <% if @user.microposts.present? %>
+    <%= @user.microposts[0].content%>
+  <% else %>
+    <%= "no posts written" =%>
+  <% end %>
+  <%#= @user.microposts.present? || "no posts written" %>
 </p>
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
